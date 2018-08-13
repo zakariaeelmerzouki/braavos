@@ -1,4 +1,4 @@
-# bravoos
+# braavos
 iron bank of bravoos online app
 Hi humans!
 
