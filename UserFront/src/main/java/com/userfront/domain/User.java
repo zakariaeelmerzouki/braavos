@@ -1,13 +1,18 @@
-package domain;
+package com.userfront.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
@@ -30,7 +35,12 @@ public class User {
 	@OneToOne
 	private SavingsAccount savingsAccount;
 	
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JsonIgnore
 	private List<Appointment> appointmentList;
+	
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JsonIgnore
 	private List<Recipient> recipientList;
 	public Long getUserId() {
 		return userId;

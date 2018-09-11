@@ -1,4 +1,4 @@
-package domain;
+package com.userfront.domain;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -14,16 +14,16 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class SavingsAccount {
+public class PrimaryAccount {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String accountNumber;
 	private BigDecimal accountBalance;
 	
-	@OneToMany(mappedBy="savingAccount",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="primaryAccount", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JsonIgnore
-	private List<SavingsTransaction> savingsTransactionList;
+	private List<PrimaryTransaction> primaryTransactionList;
 
 	public Long getId() {
 		return id;
@@ -49,18 +49,18 @@ public class SavingsAccount {
 		this.accountBalance = accountBalance;
 	}
 
-	public List<SavingsTransaction> getSavingsTransactionList() {
-		return savingsTransactionList;
+	public List<PrimaryTransaction> getPrimaryTransactionList() {
+		return primaryTransactionList;
 	}
 
-	public void setSavingsTransactionList(List<SavingsTransaction> savingsTransactionList) {
-		this.savingsTransactionList = savingsTransactionList;
+	public void setPrimaryTransactionList(List<PrimaryTransaction> primaryTransactionList) {
+		this.primaryTransactionList = primaryTransactionList;
 	}
 
 	@Override
 	public String toString() {
 		return "PrimaryAccount [id=" + id + ", accountNumber=" + accountNumber + ", accountBalance=" + accountBalance
-				+ ", savingsTransactionList=" + savingsTransactionList + "]";
+				+ ", primaryTransactionList=" + primaryTransactionList + "]";
 	}
 	
 }

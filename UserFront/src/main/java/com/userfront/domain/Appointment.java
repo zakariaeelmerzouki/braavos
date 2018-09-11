@@ -1,4 +1,4 @@
-package domain;
+package com.userfront.domain;
 
 import java.util.Date;
 
